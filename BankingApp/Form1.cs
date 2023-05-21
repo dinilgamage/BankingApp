@@ -11,7 +11,7 @@ namespace BankingApp
         {
             InitializeComponent();
         }
-
+        public static string userName="";
         private void btnlogin_Click(object sender, EventArgs e)
         {
             if (txtuser.Text == "" || txtpass.Text == "")
@@ -27,14 +27,16 @@ namespace BankingApp
                 sd.Fill(dt);
                 if (dt.Rows[0][0].ToString() == "1")
                 {
-                    Register rg = new Register();
-                    rg.Show();
+                    userName = txtuser.Text;
+
+                    UserDash ud = new UserDash();
+                    ud.Show();
                     this.Hide();
                     Conn.Close();
 
-                    rg.Left = this.Left;
-                    rg.Top = this.Top;
-                    rg.Size = this.Size;
+                    ud.Left = this.Left;
+                    ud.Top = this.Top;
+                    
                 }
                 else
                 {
@@ -42,6 +44,23 @@ namespace BankingApp
                 }
                 Conn.Close();
             }
+        }
+
+        private void btnregister_Click(object sender, EventArgs e)
+        {
+            Register rg = new Register();
+            rg.Show();
+            this.Hide();
+            Conn.Close();
+
+            rg.Left = this.Left;
+            rg.Top = this.Top;
+            rg.Size = this.Size;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -107,6 +107,7 @@
             btnregister.TabIndex = 7;
             btnregister.Text = "Register";
             btnregister.UseVisualStyleBackColor = true;
+            btnregister.Click += btnregister_Click;
             // 
             // Form1
             // 
@@ -123,6 +124,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
