@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace BankingApp
 {
-    
+
     public partial class Register : Form
     {
         SqlConnection Conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConString"].ToString());
@@ -24,17 +24,17 @@ namespace BankingApp
         private void button1_Click(object sender, EventArgs e)
         {
             Conn.Open();
-            SqlDataAdapter sd = new SqlDataAdapter("SELECT COUNT(*) FROM UserTbl WHERE Password='" + txtpass.Text + "' OR UserName='" + txtuser.Text + "'", Conn);
+            SqlDataAdapter sd = new SqlDataAdapter("SELECT COUNT(*) FROM UserTbl WHERE UserName='" + txtuser.Text + "'", Conn);
             DataTable dt = new DataTable();
             sd.Fill(dt);
             if (dt.Rows[0][0].ToString() != "0")
             {
-                MessageBox.Show("The Username or Password Already Exists", "Banking App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An account with that username already exists. If you want to open a new account with us, login using your name and open an account", "Banking App", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             else
             {
-                if (txtuser.Text == "" || txtpass.Text == "" || txtnic.Text == "")
+                if (txtuser.Text == "" || txtpass.Text == "" || txtnic.Text == "" || cmbacctype.Text == "")
                 {
                     MessageBox.Show("Please Add The Missing Information", "Banking App", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -50,6 +50,12 @@ namespace BankingApp
                         cmd.Parameters.AddWithValue("@n", txtnic.Text);
                         cmd.ExecuteNonQuery();
 
+                        SqlCommand cmd1 = new SqlCommand("INSERT INTO AccountTbl (UserName, NIC, AccountType) VALUES (@us,@nic,@at)", Conn);
+                        //add parameter with name and value pairs and passed through to the sql query
+                        cmd1.Parameters.AddWithValue("@us", txtuser.Text);
+                        cmd1.Parameters.AddWithValue("@nic", txtnic.Text);
+                        cmd1.Parameters.AddWithValue("@at", cmbacctype.Text);
+                        cmd1.ExecuteNonQuery();
 
                         MessageBox.Show("Account Created!", "Banking App", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

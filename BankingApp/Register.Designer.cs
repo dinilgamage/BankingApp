@@ -38,6 +38,8 @@
             txtnic = new TextBox();
             button1 = new Button();
             dtpdob = new DateTimePicker();
+            label6 = new Label();
+            cmbacctype = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -52,7 +54,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(50, 69);
+            label2.Location = new Point(27, 69);
             label2.Name = "label2";
             label2.Size = new Size(75, 20);
             label2.TabIndex = 1;
@@ -61,7 +63,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(50, 109);
+            label3.Location = new Point(27, 109);
             label3.Name = "label3";
             label3.Size = new Size(70, 20);
             label3.TabIndex = 2;
@@ -70,7 +72,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(50, 144);
+            label4.Location = new Point(27, 144);
             label4.Name = "label4";
             label4.Size = new Size(40, 20);
             label4.TabIndex = 3;
@@ -79,7 +81,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(50, 184);
+            label5.Location = new Point(27, 184);
             label5.Name = "label5";
             label5.Size = new Size(33, 20);
             label5.TabIndex = 4;
@@ -108,7 +110,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(266, 234);
+            button1.Location = new Point(308, 270);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 9;
@@ -124,11 +126,31 @@
             dtpdob.TabIndex = 10;
             dtpdob.Value = new DateTime(2023, 5, 21, 0, 0, 0, 0);
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(27, 230);
+            label6.Name = "label6";
+            label6.Size = new Size(98, 20);
+            label6.TabIndex = 11;
+            label6.Text = "Account Type";
+            // 
+            // cmbacctype
+            // 
+            cmbacctype.FormattingEnabled = true;
+            cmbacctype.Items.AddRange(new object[] { "Savings", "Current" });
+            cmbacctype.Location = new Point(138, 227);
+            cmbacctype.Name = "cmbacctype";
+            cmbacctype.Size = new Size(264, 28);
+            cmbacctype.TabIndex = 12;
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(431, 450);
+            Controls.Add(cmbacctype);
+            Controls.Add(label6);
             Controls.Add(dtpdob);
             Controls.Add(button1);
             Controls.Add(txtnic);
@@ -157,5 +179,7 @@
         private TextBox txtnic;
         private Button button1;
         private DateTimePicker dtpdob;
+        private Label label6;
+        private ComboBox cmbacctype;
     }
 }
